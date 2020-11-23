@@ -1,0 +1,173 @@
+html,
+body {
+   min-height: 100% !important;
+}
+
+#thisCanvas canvas {
+   position: absolute;
+   display: block;
+   height: 100%;
+   width: 100%;
+}
+
+#canvas_options {
+   background-color: #FAFAFA;
+}
+
+.mdl-layout__header {
+   color: #000;
+}
+
+.mdl-layout__header a {
+   color: rgb(63, 81, 181);
+}
+
+.mdl-layout__content {
+   display: inline;
+   background-color: #FFFFFF;
+   justify-content: center;
+   padding: 10px;
+}
+
+.rendabtn {
+  float: left;
+  background-color: #000;
+  color: #ffffff;
+  padding: 14px 0;
+  margin: 1px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.rendabtn_a{
+    width: 50%;
+}
+
+.rendabtn_b{
+    width: 100%;
+}
+
+.mdl-layout__header-row .mdl-navigation__link {
+   color: #000;
+}
+
+.mdl-checkbox {
+   width: initial;
+}
+
+.mdl-menu {
+   padding: 0px;
+}
+
+.mdl-layout__header .mdl-layout__drawer-button {
+   color: #000;
+}
+
+.mdl-layout__drawer-button .material-icons {
+   padding: 12px 0px;
+}
+
+#thisCanvas {
+   justify-content: center;
+}
+
+.mdl-slider {
+   width: 100%;
+   margin: 0;
+}
+
+.mdl-slider__background-flex {
+   position: absolute;
+   height: 2px;
+   width: calc(100% - 12px);
+   top: 50%;
+   left: 0;
+   margin: 0 6px;
+   overflow: hidden;
+   border: 0;
+   padding: 0;
+   -webkit-transform: translate(0, -1px);
+   transform: translate(0, -1px);
+}
+
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: calc(100% - 50px);
+  background-color: #555;
+  color: #fff;
+/*  text-align: center; */
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 2;
+/*  bottom: 125%; */
+  left: 28px;
+/*  margin-left: -80px; */
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Twitter button */
+.twitter-share-button {
+    display: inline-block;            
+    width: 46px;
+    height: 46px;
+    margin: 5px;
+    background-size: 100% 100%; /* ou 'contain' */
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDU2LjY5MyA1Ni42OTMiIGhlaWdodD0iNTYuNjkzcHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1Ni42OTMgNTYuNjkzIiB3aWR0aD0iNTYuNjkzcHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik0yOC4zNDgsNS4xNTdjLTEzLjYsMC0yNC42MjUsMTEuMDI3LTI0LjYyNSwyNC42MjVjMCwxMy42LDExLjAyNSwyNC42MjMsMjQuNjI1LDI0LjYyM2MxMy42LDAsMjQuNjIzLTExLjAyMywyNC42MjMtMjQuNjIzICBDNTIuOTcxLDE2LjE4NCw0MS45NDcsNS4xNTcsMjguMzQ4LDUuMTU3eiBNNDAuNzUyLDI0LjgxN2MwLjAxMywwLjI2NiwwLjAxOCwwLjUzMywwLjAxOCwwLjgwM2MwLDguMjAxLTYuMjQyLDE3LjY1Ni0xNy42NTYsMTcuNjU2ICBjLTMuNTA0LDAtNi43NjctMS4wMjctOS41MTMtMi43ODdjMC40ODYsMC4wNTcsMC45NzksMC4wODYsMS40OCwwLjA4NmMyLjkwOCwwLDUuNTg0LTAuOTkyLDcuNzA3LTIuNjU2ICBjLTIuNzE1LTAuMDUxLTUuMDA2LTEuODQ2LTUuNzk2LTQuMzExYzAuMzc4LDAuMDc0LDAuNzY3LDAuMTExLDEuMTY3LDAuMTExYzAuNTY2LDAsMS4xMTQtMC4wNzQsMS42MzUtMC4yMTcgIGMtMi44NC0wLjU3LTQuOTc5LTMuMDgtNC45NzktNi4wODRjMC0wLjAyNywwLTAuMDUzLDAuMDAxLTAuMDhjMC44MzYsMC40NjUsMS43OTMsMC43NDQsMi44MTEsMC43NzcgIGMtMS42NjYtMS4xMTUtMi43NjEtMy4wMTItMi43NjEtNS4xNjZjMC0xLjEzNywwLjMwNi0yLjIwNCwwLjg0LTMuMTJjMy4wNjEsMy43NTQsNy42MzQsNi4yMjUsMTIuNzkyLDYuNDgzICBjLTAuMTA2LTAuNDUzLTAuMTYxLTAuOTI4LTAuMTYxLTEuNDE0YzAtMy40MjYsMi43NzgtNi4yMDUsNi4yMDYtNi4yMDVjMS43ODUsMCwzLjM5NywwLjc1NCw0LjUyOSwxLjk1OSAgYzEuNDE0LTAuMjc3LDIuNzQyLTAuNzk1LDMuOTQxLTEuNTA2Yy0wLjQ2NSwxLjQ1LTEuNDQ4LDIuNjY2LTIuNzMsMy40MzNjMS4yNTctMC4xNSwyLjQ1My0wLjQ4NCwzLjU2NS0wLjk3NyAgQzQzLjAxOCwyMi44NDksNDEuOTY1LDIzLjk0Miw0MC43NTIsMjQuODE3eiIvPjwvc3ZnPg==");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* WhatsApp button */
+.whatsapp-share-button {
+    display: inline-block;            
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    background-size: 100% 100%; /* ou 'contain' */
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGcgaWQ9Ik9VVExJTkVfY29weV8yIj48Zz48Zz48cGF0aCBkPSJNMTYsMEM3LjE2MywwLDAsNy4xNjMsMCwxNnM3LjE2MywxNiwxNiwxNmM4LjgzNiwwLDE2LTcuMTY0LDE2LTE2UzI0LjgzNywwLDE2LDB6IE0xNi4wMDgsMjQuMDA0ICAgICBjLTEuNTM2LDAtMi45ODQtMC4zODQtNC4yNTctMS4wNDdsLTQuOTg4LDIuMjdsMS4zOTYtNS41ODZjLTAuODcyLTEuNDE0LTEuMzk2LTMuMDktMS4zOTYtNC44ODcgICAgIGMwLTUuMDk2LDQuMTM0LTkuMjMzLDkuMjQ2LTkuMjMzYzUuMDkzLDAsOS4yMjgsNC4xMzcsOS4yMjgsOS4yMzNDMjUuMjM2LDE5Ljg2NywyMS4xMDIsMjQuMDA0LDE2LjAwOCwyNC4wMDR6Ii8+PC9nPjxnPjxwYXRoIGQ9Ik0xNi4wMDgsNy4zNzFjLTQuMDgzLDAtNy4zOTcsMy4yOTktNy4zOTcsNy4zODNjMCwxLjg1LDAuNjgxLDMuNTQzLDEuNzk3LDQuODM1bC0xLjAxMiwyLjU2NmwyLjI1MS0xLjQzMSAgICAgYzEuMjIsMC45MDcsMi43MjEsMS40MzEsNC4zNjEsMS40MzFjNC4wODIsMCw3LjM3OS0zLjMxNiw3LjM3OS03LjRDMjMuMzg3LDEwLjY3LDIwLjA5LDcuMzcxLDE2LjAwOCw3LjM3MXogTTIwLjY4NCwxNy44NDIgICAgIGMtMC4wNywwLjM2Ni0wLjk0MiwxLjE1Mi0xLjYyMywxLjMwOWMtMS40NjUsMC4zMzEtMy41NDEtMC44MzgtNC44ODUtMi4wNzZjLTEuMzQ0LTEuMjIxLTIuNjg2LTMuMTk0LTIuNDk0LTQuNjc4ICAgICBjMC4wODctMC42ODEsMC44MDItMS42MjMsMS4xNTEtMS43NDVjMC4xNTctMC4wMzUsMC4zODMtMC4wMzUsMC41OTMtMC4wMzVjMC4yNDQsMC4wMTcsMC40NTQsMC4wMzUsMC41MjQsMC4xNzRsMC43ODUsMi4wNDIgICAgIGMwLjA1MiwwLjE1Ny0wLjA3LDAuMzMxLTAuMjI3LDAuNTI0Yy0wLjIyNiwwLjI2Mi0wLjI2MSwwLjI3OS0wLjQ3MSwwLjU1OWMtMC4xMDQsMC4xMzktMC4wMzUsMC4zMTQsMCwwLjM4MyAgICAgYzAuMjI3LDAuNTQxLDAuNzUsMS4xNTIsMS4yMjEsMS41ODhjMC40ODksMC40MzcsMS4xMzMsMC45MDgsMS42OTIsMS4wOTljMC4wMzUsMCwwLjI0NCwwLjA4NywwLjQwMSwwLjA1MiAgICAgYzAuMTM5LTAuMDE3LDAuMjI2LTAuMTIyLDAuMzQ4LTAuMjc5YzAuMjI2LTAuMjc5LDAuMzE0LTAuMzg0LDAuNTA2LTAuNjQ2YzAuMTU3LTAuMTkyLDAuMzEzLTAuMjYyLDAuNDcyLTAuMTc1bDEuNzc5LDAuODIxICAgICBjMC4xNCwwLjA3LDAuMTkyLDAuMjQ0LDAuMjA5LDAuNDg5QzIwLjcwMSwxNy40NTksMjAuNzE5LDE3LjY4NiwyMC42ODQsMTcuODQyeiIvPjwvZz48L2c+PC9nPjwvc3ZnPg==");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Instagram button */
+.instagram-follow-button {
+    display: inline-block;            
+    width: 46px;
+    height: 46px;
+    margin: 5px;
+    background-size: 100% 100%; /* ou 'contain' */
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI1Ni43cHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1Ni43IDU2Ljc7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1Ni43IDU2LjciIHdpZHRoPSI1Ni43cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnPjxjaXJjbGUgY3g9IjI4LjEiIGN5PSIzMCIgcj0iNC40Ii8+PHBhdGggZD0iTTMzLjYsMTkuMmgtMTFjLTEuNiwwLTMsMC41LTMuOSwxLjRjLTAuOSwwLjktMS40LDIuMy0xLjQsMy45djExYzAsMS42LDAuNSwzLDEuNSw0YzEsMC45LDIuMywxLjQsMy45LDEuNGgxMC45ICAgYzEuNiwwLDMtMC41LDMuOS0xLjRjMS0wLjksMS41LTIuMywxLjUtMy45di0xMWMwLTEuNi0wLjUtMi45LTEuNC0zLjlDMzYuNiwxOS43LDM1LjMsMTkuMiwzMy42LDE5LjJ6IE0yOC4xLDM2LjggICBjLTMuOCwwLTYuOC0zLjEtNi44LTYuOGMwLTMuOCwzLjEtNi44LDYuOC02LjhTMzUsMjYuMiwzNSwzMEMzNSwzMy44LDMxLjksMzYuOCwyOC4xLDM2Ljh6IE0zNS4yLDI0LjVjLTAuOSwwLTEuNi0wLjctMS42LTEuNiAgIHMwLjctMS42LDEuNi0xLjZzMS42LDAuNywxLjYsMS42UzM2LjEsMjQuNSwzNS4yLDI0LjV6Ii8+PHBhdGggZD0iTTI4LjMsNS4yYy0xMy42LDAtMjQuNiwxMS0yNC42LDI0LjZjMCwxMy42LDExLDI0LjYsMjQuNiwyNC42YzEzLjYsMCwyNC42LTExLDI0LjYtMjQuNkM1MywxNi4yLDQxLjksNS4yLDI4LjMsNS4yeiAgICBNNDEuNCwzNS42YzAsMi4zLTAuOCw0LjMtMi4yLDUuN2MtMS40LDEuNC0zLjQsMi4xLTUuNiwyLjFIMjIuN2MtMi4yLDAtNC4yLTAuNy01LjYtMi4xYy0xLjUtMS40LTIuMi0zLjQtMi4yLTUuN3YtMTEgICBjMC00LjYsMy4xLTcuOCw3LjgtNy44aDExYzIuMywwLDQuMiwwLjgsNS42LDIuMmMxLjQsMS40LDIuMSwzLjMsMi4xLDUuNlYzNS42eiIvPjwvZz48L3N2Zz4=");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}

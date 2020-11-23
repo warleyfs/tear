@@ -1,0 +1,173 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Renda-se</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript" src="javascript/createPoint.js"></script>
+    <script type="text/javascript" src="javascript/createSymmetry.js"></script>
+    <script type="text/javascript" src="javascript/createTear.js"></script>
+    <script type="text/javascript" src="javascript/draw.js"></script>
+    <script type="text/javascript" src="javascript/onLoad.js"></script>
+    <script type="text/javascript" src="javascript/prepareCanvas.js"></script>
+    <script type="text/javascript" src="javascript/reset.js"></script>
+    <script type="text/javascript" src="javascript/send.js"></script>
+    <script type="text/javascript" src="javascript/setColor.js"></script>
+    <script type="text/javascript" src="javascript/setStroke.js"></script>
+    <script type="text/javascript" src="javascript/showHide.js"></script>
+    <script type="text/javascript" src="javascript/showInstructions.js"></script>
+    <script type="text/javascript" src="javascript/showSequence.js"></script>
+    <script type="text/javascript" src="javascript/undo.js"></script>
+    <script type="text/javascript" src="javascript/update.js"></script>
+</head>
+
+<body onload="load();">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header id="canvas_options" class="mdl-layout__header mdl-layout__header--transparent">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Tear Mercês</span>
+
+                <div class="mdl-layout-spacer"></div>
+
+                <div class="mdl-navigation__link">
+                    <!-- Right aligned menu below button -->
+                    <button id="SelectedColor" class="mdl-button mdl-js-button">
+                        Desejos
+                    </button>
+
+                    <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect" for="SelectedColor">
+                        <li class="mdl-menu__item color-palete" style="background:lightskyblue;" id="lightskyblue"
+                            onclick="setColor(this)">
+                            <font color="black">Fé</font>
+                        </li>
+                        <li class="mdl-menu__item color-palete" style="background:gold;" id="gold"
+                            onclick="setColor(this)">
+                            <font color="black">Foco</font>
+                        </li>
+                        <li class="mdl-menu__item color-palete" style="background:tomato;" id="tomato"
+                            onclick="setColor(this)">
+                            <font color="black">Força</font>
+                        </li>
+                        <li class="mdl-menu__item color-palete" style="background:lightgreen;" id="lightgreen"
+                            onclick="setColor(this)">
+                            <font color="black">Saudade</font>
+                        </li>
+                        <li class="mdl-menu__item color-palete" style="background:blueviolet;" id="blueviolet"
+                            onclick="setColor(this)">
+                            <font color="white">União</font>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Opções do Tear</span>
+            <nav class="mdl-navigation">
+
+                <a class="mdl-navigation__link" style="cursor: pointer;margin-bottom: 10px;"
+                    onclick="showSequence();">Mostrar Sequência</a>
+                <div class="mdl-textfield mdl-js-textfield mdl-navigation__link">
+                    <textarea class="mdl-textfield__input" type="text" rows="20" id="sequence"></textarea>
+                    <!-- <label class="mdl-textfield__label" for="sequence">Sequência</label> -->
+                </div>
+            </nav>
+        </div>
+
+        <main class="mdl-layout__content">
+            <div style='display:block;'>
+                <div style='width:100%' onclick="showInstructions();" class="popup">
+
+                    <span class="popuptext" id="myPopup">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" align="left" viewBox="0 0 24 24">
+                            <path fill="none" d="M0 0h24v24H0V0z" />
+                            <path fill="#ffffff"
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1zm1-8h-2V7h2v2z" />
+                            </svg>
+                        <b>Instruções:</b>
+                        <p>Olá, este é o tear digital do Alto das Mercês.</p>
+                        <p>Vamos aproveitar que estamos distantes uns dos outros e nos conectar através da tecnologia?
+                            <b>#JuntosDeLonge #FiqueEmCasa</b></p>
+                        <p>Para interagir com o tear, primeiro <b>escolha um desejo</b> que você acredita ser importante
+                            para o bairro no canto superior direito. Cada desejo tem uma cor específica.</p>
+                        <p>Pronto! Agora, <b>desenhe a sua própria renda</b> selecionando os círculos. Se quiser regular
+                            a espessura do seu fio, basta mover a bolinha azul logo abaixo do tear para a direita ou
+                            esquerda.</p>
+                        <p>Legal né? Mas pode ficar ainda melhor. Abaixo também existe um botão especial que pode
+                            finalizar suas camadas da renda automaticamente a partir dos pontos que você já selecionou,
+                            experimente! <b>(Rendar-se).</b></p>
+                        <p>Você pode limpar totalmente o tear <b>(Limpar)</b>. Ou desfazer a última ação
+                            <b>(Desfazer)</b>. </p>
+                        <p>No canto superior esquerdo tem um menu. Nele você também pode ver a sequência dos pontos
+                            selecionados, aperte em <b>(Mostrar Sequência)</b>.</p>
+                        <p>Divirta-se o quanto quiser, mas lembre-se de enviar sua renda para o Fortim <b>(Enviar para o
+                                Fortim)</b>!</p>
+                        <p><b>Compartilhe com seus amigos! Renda-se em casa!</b></p>
+                        <p>*Clique na tela para fechar as instruções*</p>
+                    </span>
+                </div>
+
+                <!-- Formulário com nome e comentário -->
+                <div id="info_form" class="modal">
+                    <span onclick="showHide('info_form');" class="close" title="Close Modal">×</span>
+                    <div class="container modal-content">
+                        <label class="" for="line-weight"><b>Fale um pouco sobre sua Renda!</b></label>
+                        <hr style="height:2px;border-width:0;color:gray;background-color:gray"><br />
+                        <label>Nome:</label><br />
+                        <input type="text" id="name_field" name="name" size=40><br />
+                        <label>Mensagem:</label><br />
+                        <textarea name="comment" id="comment_field" rows="6" cols=40
+                            wrap=virtual></textarea><br /><br />
+                        <div class="clearfix">
+                            <button class="formbtn formbtn_cancel" onclick="showHide('info_form');">FECHAR</button>
+                            <button class="formbtn formbtn_cancel"
+                                onclick="send(); window.open('tear_server_live.html', '_blank');">ENVIAR</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fim do formulário com nome e comentário -->
+
+                <div id="thisCanvas">
+                    <svg width="440" height="440" id='svg'
+                        style='margin-left: 0px; margin-top: -40px; margin-bottom: -40px; transform: none;'>
+                        <path id='path' stroke="black" stroke-width="1" opacity="1" fill="none" d="" />
+                    </svg>
+                </div>
+                <div id="thisCanvas">
+                    <center>
+                        <div class="">
+                            <input id="line-weight" class="mdl-slider mdl-js-slider" type="range" step="0.1" min="0.1"
+                                max="5" value="1" tabindex="0" onChange="setStroke();">
+                        </div><br />
+                        <center style='z-index:8;'>
+                            <button class="rendabtn rendabtn_a" onclick='reset();'>LIMPAR</button>
+                            <button class="rendabtn rendabtn_a" onclick='undo();'>DESFAZER</button>
+                            <button class="rendabtn rendabtn_b" onclick='createSymmetry();'>RENDAR-SE</button>
+                            <button class="rendabtn rendabtn_a" onclick="showHide('info_form');">ENVIAR PARA O
+                                FORTIM</button>
+                            <button class="rendabtn rendabtn_a" onclick="window.open('tear_server.html', '_blank');">VER
+                                O FORTIM</button>
+                        </center>
+                        <a href="" id="whatsapp-share-btt" rel="nofollow" target="_blank"
+                            class="whatsapp-share-button"></a>
+                        <a href="https://www.instagram.com/rendasesjdr/" class="instagram-follow-button"></a>
+                        <a href="" id="twitter-share-btt" rel="nofollow" target="_blank"
+                            class="twitter-share-button"></a>
+                    </center>
+                </div>
+        </main>
+    </div>
+</body>
+
+</html>

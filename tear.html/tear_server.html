@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Renda-se</title>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="css/server.css">
+        <link rel="stylesheet" href="css/comments.css">
+
+        <script src="https://code.getmdl.io/1.3.0/material.min.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="javascript/verticalLines.js"></script>
+        <script src="javascript/drawTear.js"></script>
+        <script src="javascript/loadTear.js"></script>
+        <script src="javascript/processData.js"></script>
+        <script src="javascript/showComments.js"></script>
+        <script src="javascript/Guitar.js"></script>
+        <script src="javascript/Harpsichord.js"></script>
+        <script src="javascript/playMusic.js"></script>
+    </head>
+    <body onload='loadTear();'>
+        <button onclick = "context = new (window.AudioContext || window.webkitAudioContext)();">Ouvir o tear</button>
+        <div id='data'></div>
+       <div style='z-index:5;position:absolute;'>
+       </div>
+       <div id='svg-container'>
+        <svg width="440" height="440" id='svg' style='margin-left: -35px; margin-top: -20px; transform: scale(0.8);'>
+            <path id='path' stroke="white" stroke-width="1" opacity="1" fill="none" />
+        </svg>
+       </div>
+       <div id="comments"></div>
+    </body>
+</html>
