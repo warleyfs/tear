@@ -1,2 +1,2 @@
 # tear
-Aplicação de demonstração da tese de mestrado do meu irmão Igino
+Aplicação de demonstração da dissertação de mestrado do meu irmão Igino
