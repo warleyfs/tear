@@ -21,6 +21,7 @@ function processDataLive(data) {
 
     var content = JSON.parse(data);
     var parent = document.getElementById("data");
+    $(parent).empty();
 
     content.forEach(item => {
 
@@ -42,7 +43,7 @@ function processDataLive(data) {
 
         var svg = SVG().size(440, 440).scale(0.3, 0.3, -150, -120).addTo(svgContainer);
         var path = svg.path(item != null && item.data != null ? item.data : "").fill('none');
-        path.animate(2000, 2000).stroke({
+        path.animate(1000, 1000).stroke({
             color: '#f06',
             width: 1,
             linecap: 'round',
