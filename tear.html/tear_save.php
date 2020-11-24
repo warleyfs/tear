@@ -7,11 +7,11 @@ $myObj->coordinate = $_POST['coordinate'];
 $myObj->color = $_POST['color'];
 $myObj->data = $_POST['data'];
 $myObj->line_weight = $_POST['line_weight'];
-$myObj->date = date('d-m-Y-H:i');
+$myObj->date = date('d-m-Y-H-i');
 
 $data = json_encode($myObj);
 
-$name='tear_' . date('d-m-Y-H:i');
+$name='tear_' . date('d-m-Y-H-i');
 $result = file_put_contents('data/' . $name . '.txt', $data, FILE_APPEND | LOCK_EX);
 echo "Sucesso " . $result . "\n"
 ?>
