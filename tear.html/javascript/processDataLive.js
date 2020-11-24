@@ -40,10 +40,14 @@ function processDataLive(data) {
         var svgContainer = document.createElement("div");
         svgContainer.className = "svg-container";
 
-        var svg = SVG().size(440, 440).addTo(svgContainer);
-        var path = svg.path(item != null && item.data != null ? item.data : "");
-        path.fill('none').animate(100);
-        path.stroke({ color: '#f06', width: 1, linecap: 'round', linejoin: 'round' });
+        var svg = SVG().size(440, 440).scale(0.3, 0.3, -150, -120).addTo(svgContainer);
+        var path = svg.path(item != null && item.data != null ? item.data : "").fill('none');
+        path.animate(2000, 2000).stroke({
+            color: '#f06',
+            width: 1,
+            linecap: 'round',
+            linejoin: 'round'
+        }).loop(true, true);
 
         container.appendChild(comment);
         container.appendChild(svgContainer);
