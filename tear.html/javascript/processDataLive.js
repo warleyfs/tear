@@ -1,3 +1,4 @@
+// Array para controlar dados já apresentados na tela
 var currentData = [];
 
 function processDataLive(data) {
@@ -5,19 +6,26 @@ function processDataLive(data) {
     var content = JSON.parse(data);
     content.sort(compare);
 
+    // Se foram recebidos mais dados do que já apresentado
     if (content.length > currentData.length) {
         
+        debugger;
+
         var parent = document.getElementById("data");
 
-        if (currentData.length == 0) 
-            $(parent).empty();
-
+        // Para cada item recebido
         content.forEach(item => {
 
+            // O item atual existe no array de dados atuais?
             var exists = currentData.find(element => {
-                return new Date(element.date) == new Date(item.date);
-            });
+                
+                var data1 = element != null ? Date.parse(element.date) : NaN;
+                var data2 = item != null ? Date.parse(item.date) : NaN;
 
+                return data1 == data2;
+            });
+            
+            // Se não exite ou dados atuais vazio
             if (currentData.length == 0 || !exists) {
                 
                 var container = document.createElement("div");
@@ -58,14 +66,17 @@ function processDataLive(data) {
                 container.appendChild(info);
                 container.appendChild(svgContainer);
 
-                parent.appendChild(container);
+                // Adiciona como primeiro item na tela
+                $(parent).prepend(container);
             }
         });
 
+        // Guarda os dados atuais
         currentData = content;
     }
 }
 
+// Ordena o array em ordem crescente
 function compare(a, b) {
     
     var comparison = 0;
@@ -75,11 +86,11 @@ function compare(a, b) {
         var bandB = Date.parse(b.date);
 
         if (bandA > bandB) {
-            comparison = -1;
-        } else if (bandA < bandB) {
             comparison = 1;
+        } else if (bandA < bandB) {
+            comparison = -1;
         }
-    } else { comparison = 1; }
+    } else { comparison = -1; }
 
     return comparison;
-  }
+}
