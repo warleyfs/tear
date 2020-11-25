@@ -44,7 +44,7 @@ function processDataLive(data) {
         var svg = SVG().size(440, 440).scale(0.3, 0.3, -150, -120).addTo(svgContainer);
         var path = svg.path(item != null && item.data != null ? item.data : "").fill('none');
         path.animate(1000, 1000).stroke({
-            color: '#f06',
+            color: '#ffffff',
             width: 1,
             linecap: 'round',
             linejoin: 'round'
