@@ -14,5 +14,5 @@ function loadTearLive() {
     }
     // Send the data to PHP
     hr.send(vars);
-    //setTimeout(loadTearLive, 2000);
+    setTimeout(loadTearLive, 2000);
 }
