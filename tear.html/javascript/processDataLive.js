@@ -19,7 +19,11 @@ function processDataLive(data) {
     // comment.innerHTML += content["comment"];
     // comment.innerHTML += content["date"];
 
+    debugger;
+
     var content = JSON.parse(data);
+    content.sort(compare);
+
     var parent = document.getElementById("data");
     $(parent).empty();
 
@@ -31,12 +35,22 @@ function processDataLive(data) {
         // Change background color
         container.style.backgroundColor = item != null && item.color != null ? item.color : "gray";
 
-        //Animate name, date and comment
-        var comment = document.createElement("div");
-        comment.className = "comment";
-        comment.innerHTML = item != null && item.name != null ? item.name : "";
-        comment.innerHTML += item != null && item.comment != null ? item.comment : "";
-        comment.innerHTML += item != null && item.date != null ? item.date : "";
+        // Animate name, date and comment
+        var info = document.createElement("div");
+        info.className = "comment";
+
+        var name = document.createElement("label");
+        name.innerHTML = item != null && item.name != null ? item.name.replace('<hr>', '').replace('<br>', '') : "";
+        
+        var comment = document.createElement("label");
+        comment.innerHTML = item != null && item.comment != null ? item.comment : "";
+        
+        var date = document.createElement("label");
+        date.innerHTML = item != null && item.date != null ? new Date(item.date).toLocaleString() : "";
+
+        info.appendChild(name);
+        info.appendChild(comment);
+        info.appendChild(date);
 
         var svgContainer = document.createElement("div");
         svgContainer.className = "svg-container";
@@ -50,9 +64,27 @@ function processDataLive(data) {
             linejoin: 'round'
         }).loop(true, true);
 
-        container.appendChild(comment);
+        container.appendChild(info);
         container.appendChild(svgContainer);
 
         parent.appendChild(container);
     });
 }
+
+function compare(a, b) {
+    
+    var comparison = 0;
+
+    if (a != null && b != null) {
+        var bandA = Date.parse(a.date);
+        var bandB = Date.parse(b.date);
+
+        if (bandA > bandB) {
+            comparison = -1;
+        } else if (bandA < bandB) {
+            comparison = 1;
+        }
+    } else { comparison = -1; }
+
+    return comparison;
+  }

@@ -7,7 +7,7 @@ $myObj->coordinate = $_POST['coordinate'];
 $myObj->color = $_POST['color'];
 $myObj->data = $_POST['data'];
 $myObj->line_weight = $_POST['line_weight'];
-$myObj->date = date('d-m-Y-H-i');
+$myObj->date = date('YYYY-mm-dd'.'T'.'HH:ii');
 
 $data = json_encode($myObj);
 
