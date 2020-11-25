@@ -9,8 +9,6 @@ function processDataLive(data) {
     // Se foram recebidos mais dados do que já apresentado
     if (content.length > currentData.length) {
         
-        debugger;
-
         var parent = document.getElementById("data");
 
         // Para cada item recebido
@@ -25,8 +23,8 @@ function processDataLive(data) {
                 return data1 == data2;
             });
             
-            // Se não exite ou dados atuais vazio
-            if (currentData.length == 0 || !exists) {
+            // Se não exite ou dados atuais vazio e item atual não nulo
+            if (currentData.length == 0 || !exists && item != null) {
                 
                 var container = document.createElement("div");
                 container.className = "container";
