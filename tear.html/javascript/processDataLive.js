@@ -1,58 +1,94 @@
-var index = 0;
+// Array para controlar dados já apresentados na tela
+var currentData = [];
 
 function processDataLive(data) {
 
-    // var content = JSON.parse(data);
-
-    // // Change background color
-    // document.body.style.backgroundColor = content.color;
-
-    // // draw the path
-    // path = document.getElementById("path");
-    // path.setAttribute("d", content.data);
-    // path.setAttribute("stroke-width", content.line_weight);
-    // index = (index == content.length - 1) ? 0 : index + 1;
-
-    // //Animate name, date and comment
-    // comment = document.getElementById("comments");
-    // comment.innerHTML = content["name"];
-    // comment.innerHTML += content["comment"];
-    // comment.innerHTML += content["date"];
-
     var content = JSON.parse(data);
-    var parent = document.getElementById("data");
-    $(parent).empty();
+    content.sort(compare);
 
-    content.forEach(item => {
+    // Se foram recebidos mais dados do que já apresentado
+    if (content.length > currentData.length) {
+        
+        var parent = document.getElementById("data");
 
-        var container = document.createElement("div");
-        container.className = "container";
+        // Para cada item recebido
+        content.forEach(item => {
 
-        // Change background color
-        container.style.backgroundColor = item != null && item.color != null ? item.color : "gray";
+            // O item atual existe no array de dados atuais?
+            var exists = currentData.find(element => {
+                
+                var data1 = element != null ? Date.parse(element.date) : NaN;
+                var data2 = item != null ? Date.parse(item.date) : NaN;
 
-        //Animate name, date and comment
-        var comment = document.createElement("div");
-        comment.className = "comment";
-        comment.innerHTML = item != null && item.name != null ? item.name : "";
-        comment.innerHTML += item != null && item.comment != null ? item.comment : "";
-        comment.innerHTML += item != null && item.date != null ? item.date : "";
+                return data1 == data2;
+            });
+            
+            // Se não exite ou dados atuais vazio e item atual não nulo
+            if (currentData.length == 0 || !exists && item != null) {
+                
+                var container = document.createElement("div");
+                container.className = "container";
 
-        var svgContainer = document.createElement("div");
-        svgContainer.className = "svg-container";
+                // Change background color
+                container.style.backgroundColor = item != null && item.color != null ? item.color : "gray";
 
-        var svg = SVG().size(440, 440).scale(0.5, 0.5, -220, -200).addTo(svgContainer);
-        var path = svg.path(item != null && item.data != null ? item.data : "").fill('none');
-        path.animate(1000, 1000).stroke({
-            color: '#ffffff',
-            width: 1,
-            linecap: 'round',
-            linejoin: 'round'
-        }).loop(true, true);
+                // Animate name, date and comment
+                var info = document.createElement("div");
+                info.className = "comment";
 
-        container.appendChild(comment);
-        container.appendChild(svgContainer);
+                var name = document.createElement("label");
+                name.innerHTML = item != null && item.name != null ? item.name.replace('<hr>', '').replace('<br>', '') : "";
+                
+                var comment = document.createElement("label");
+                comment.innerHTML = item != null && item.comment != null ? item.comment : "";
+                
+                var date = document.createElement("label");
+                date.innerHTML = item != null && item.date != null ? new Date(item.date).toLocaleString() : "";
 
-        parent.appendChild(container);
-    });
+                info.appendChild(name);
+                info.appendChild(comment);
+                info.appendChild(date);
+
+                var svgContainer = document.createElement("div");
+                svgContainer.className = "svg-container";
+
+                var svg = SVG().size(440, 440).scale(0.5, 0.5, -220, -200).addTo(svgContainer);
+                var path = svg.path(item != null && item.data != null ? item.data : "").fill('none');
+                path.animate(1000, 1000).stroke({
+                    color: '#ffffff',
+                    width: 1,
+                    linecap: 'round',
+                    linejoin: 'round'
+                }).loop(true, true);
+
+                container.appendChild(info);
+                container.appendChild(svgContainer);
+
+                // Adiciona como primeiro item na tela
+                $(parent).prepend(container);
+            }
+        });
+
+        // Guarda os dados atuais
+        currentData = content;
+    }
+}
+
+// Ordena o array em ordem crescente
+function compare(a, b) {
+    
+    var comparison = 0;
+
+    if (a != null && b != null) {
+        var bandA = Date.parse(a.date);
+        var bandB = Date.parse(b.date);
+
+        if (bandA > bandB) {
+            comparison = 1;
+        } else if (bandA < bandB) {
+            comparison = -1;
+        }
+    } else { comparison = -1; }
+
+    return comparison;
 }
