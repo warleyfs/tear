@@ -41,7 +41,7 @@ function processDataLive(data) {
         var svgContainer = document.createElement("div");
         svgContainer.className = "svg-container";
 
-        var svg = SVG().size(440, 440).scale(0.3, 0.3, -150, -120).addTo(svgContainer);
+        var svg = SVG().size(440, 440).scale(0.5, 0.5, -220, -200).addTo(svgContainer);
         var path = svg.path(item != null && item.data != null ? item.data : "").fill('none');
         path.animate(1000, 1000).stroke({
             color: '#ffffff',
